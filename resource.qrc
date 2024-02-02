@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/2osobowy.png</file>
+        <file>img/4osobowy.png</file>
+        <file>img/6osobowy.png</file>
+        <file>img/logoFirmy.png</file>
+        <file>img/kwiat.png</file>
+    </qresource>
+</RCC>
