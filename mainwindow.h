@@ -2,12 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "logowanie.h"
-#include "stolik.h"
-#include "zamowienie.h"
-#include "wyborstolika.h"
-#include "stanstolikow.h"
-#include <QPixmap>
+#include <QMessageBox>
+#include "mainmenu.h"
+
+#include <QDebug>
+#include <QStringList>
+
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+
+#include <mysql.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,29 +24,27 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    void readRecordsToListWidget();
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
     QPixmap logoFirmy;
     int heightLogo;
     int widthLogo;
-
 private slots:
-    void on_pushButton_wylogowanie_clicked();
+    void on_pushButton_logowanie_clicked();
 
-    void on_pushButton_rozbudujRestauracje_clicked();
+    // void on_btAdd_clicked();
 
-    void on_pushButton_wyborStolika_clicked();
+    // void on_records_doubleClicked(const QModelIndex &index);
 
-    void on_pushButton_stanStolikow_clicked();
+    // void on_btRemove_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Logowanie *m_logowanie;
-    Stolik * m_stolik;
-    Zamowienie * m_zamowienie;
-    wyborStolika *m_wyborStolika;
-    StanStolikow *m_stanStolikow;
+    MainMenu *m_mainmenu;
+    QSqlDatabase *db;
+
 };
 #endif // MAINWINDOW_H

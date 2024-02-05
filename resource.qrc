@@ -5,5 +5,7 @@
         <file>img/6osobowy.png</file>
         <file>img/logoFirmy.png</file>
         <file>img/kwiat.png</file>
+        <file>img/pizzaCala.png</file>
+        <file>img/pizzaPolowy.png</file>
     </qresource>
 </RCC>

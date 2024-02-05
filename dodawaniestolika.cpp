@@ -21,29 +21,22 @@ QString DodawanieStolika::getKtoryStolik() const
 
 QString DodawanieStolika::getIloscMiejsc() const
 {
-    return ui->comboBox->currentText();
+    return ui->comboBox_wyborIlosciMiejsc->currentText();
 }
 
 void DodawanieStolika::zablokujQComboBox()
 {
-    ui->comboBox->setEnabled(false);
+    ui->comboBox_wyborIlosciMiejsc->setEnabled(false);
 }
 
 
 
 void DodawanieStolika::on_buttonBox_potwierdzenieDodania_accepted()
 {
-    if(ui->radioButton_stolik1->isChecked())
+    if(ui->checkBox_miejsce1->isChecked())
     {
         m_ktoryStolik = "Pierwszy";
     }
-    else if(ui->radioButton_stolik2->isChecked())
-    {
-        m_ktoryStolik = "Drugi";
-    }
-    else if(ui->radioButton_stolik3->isChecked())
-    {
-        m_ktoryStolik = "Trzeci";
-    }
+
 }
 

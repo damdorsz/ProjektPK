@@ -125,8 +125,9 @@ void wyborStolika::on_pushButton_wybierzStolik1_clicked()
     m_zamowienie->m_kopiaStolika = m_kopiaStolika;
     m_zamowienie->iloscMiejscKopia = m_kopiaStolika->iloscKrzesel[0];
     m_zamowienie->ktoryStolik = 0;
-    m_zamowienie->resetPodIloscMiejsc();
-    m_zamowienie->ustawianiePodIloscMiejsc();
+    m_zamowienie->ktoryStolikWyswietl();
+    m_zamowienie->ustawianieComboBoxDodatkiNapojePrzystawki();
+    m_zamowienie->ustawPizzeComboBox();
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[0] == false)
     {
@@ -142,8 +143,9 @@ void wyborStolika::on_pushButton_wybierzStolik2_clicked()
     m_zamowienie->m_kopiaStolika = m_kopiaStolika;
     m_zamowienie->iloscMiejscKopia = m_kopiaStolika->iloscKrzesel[1];
     m_zamowienie->ktoryStolik = 1;
-    m_zamowienie->resetPodIloscMiejsc();
-    m_zamowienie->ustawianiePodIloscMiejsc();
+    m_zamowienie->ktoryStolikWyswietl();
+    m_zamowienie->ustawianieComboBoxDodatkiNapojePrzystawki();
+    m_zamowienie->ustawPizzeComboBox();
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[1] == false)
     {
@@ -159,8 +161,9 @@ void wyborStolika::on_pushButton_wybierzStolik3_clicked()
     m_zamowienie->m_kopiaStolika = m_kopiaStolika;
     m_zamowienie->iloscMiejscKopia = m_kopiaStolika->iloscKrzesel[2];
     m_zamowienie->ktoryStolik = 2;
-    m_zamowienie->resetPodIloscMiejsc();
-    m_zamowienie->ustawianiePodIloscMiejsc();
+    m_zamowienie->ktoryStolikWyswietl();
+    m_zamowienie->ustawianieComboBoxDodatkiNapojePrzystawki();
+    m_zamowienie->ustawPizzeComboBox();
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[2] == false)
     {

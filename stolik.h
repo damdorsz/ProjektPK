@@ -6,6 +6,12 @@
 #include <QStringList>
 #include <QPixmap>
 #include "dodawaniestolika.h"
+#include <QDebug>
+
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <mysql.h>
 
 namespace Ui {
 class Stolik;
@@ -31,7 +37,8 @@ public:
     bool czyWolny [iloscStolikow] = {true,true,true};
     int iloscKrzesel [iloscStolikow] = {0,0,0};
     bool czyIstnieje [iloscStolikow] = {false,false,false};
-
+    void setDataBase(QSqlDatabase *db);
+    QSqlDatabase getDataBase();
 
 private slots:
     void on_pushButton_cofnij_clicked();
@@ -43,6 +50,7 @@ private slots:
 private:
     Ui::Stolik *ui;
     DodawanieStolika *m_nowyStolik;
+    QSqlDatabase *m_db;
 };
 
 #endif // STOLIK_H

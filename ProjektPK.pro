@@ -1,17 +1,19 @@
-QT       += core gui
+QT += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql
 
 CONFIG += c++17
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+# Include paths for MySQL Connector C
+INCLUDEPATH += "C:/Program Files/MySQL/MySQL Connector C 6.1/include"
+
+# Library paths for MySQL Connector C (jeśli potrzebne)
+# LIBS += -L"path_to_library_directory"
 
 SOURCES += \
     dodawaniestolika.cpp \
-    logowanie.cpp \
     main.cpp \
+    mainmenu.cpp \
     mainwindow.cpp \
     stanstolikow.cpp \
     stolik.cpp \
@@ -20,7 +22,7 @@ SOURCES += \
 
 HEADERS += \
     dodawaniestolika.h \
-    logowanie.h \
+    mainmenu.h \
     mainwindow.h \
     stanstolikow.h \
     stolik.h \
@@ -29,7 +31,7 @@ HEADERS += \
 
 FORMS += \
     dodawaniestolika.ui \
-    logowanie.ui \
+    mainmenu.ui \
     mainwindow.ui \
     stanstolikow.ui \
     stolik.ui \

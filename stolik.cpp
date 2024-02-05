@@ -19,6 +19,16 @@ Stolik::Stolik(QWidget *parent)
     ui->label_stolik3->setPixmap(kwiat.scaled(widthLogo,heightLogo,Qt::KeepAspectRatio));
 }
 
+void Stolik::setDataBase(QSqlDatabase *db)
+{
+    m_db = db;
+}
+
+QSqlDatabase Stolik::getDataBase()
+{
+    return *m_db;
+}
+
 Stolik::~Stolik()
 {
     delete ui;
