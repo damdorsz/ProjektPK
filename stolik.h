@@ -31,14 +31,15 @@ public:
     QPixmap kwiat;
     int heightLogo;
     int widthLogo;
-    static const int iloscStolikow = 3;
-    int m_kwotaZamowienia [iloscStolikow] = {0,0,0};
-    int m_czasOczekiwania [iloscStolikow] = {0,0,0};
-    bool czyWolny [iloscStolikow] = {true,true,true};
-    int iloscKrzesel [iloscStolikow] = {0,0,0};
-    bool czyIstnieje [iloscStolikow] = {false,false,false};
+    static const int ILOSC_STOLIKOW = 9;
+    int m_kwotaZamowienia [ILOSC_STOLIKOW] = {};
+    int m_czasOczekiwania [ILOSC_STOLIKOW] = {};
+    bool czyWolny [ILOSC_STOLIKOW] = {};
+    int iloscKrzesel [ILOSC_STOLIKOW] = {};
+    bool czyIstnieje [ILOSC_STOLIKOW];
     void setDataBase(QSqlDatabase *db);
     QSqlDatabase getDataBase();
+    void dodanieDomyslnychObrazkow();
 
 private slots:
     void on_pushButton_cofnij_clicked();

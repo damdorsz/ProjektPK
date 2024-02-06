@@ -26,15 +26,28 @@ public:
     int widthLogo;
     Stolik *m_kopiaStolika;
     void ladowanieWyboruStolika();
+    void ustawWstepnie();
 
 private slots:
     void on_pushButton_clicked();
 
-    void on_pushButton_wybierzStolik1_clicked();
+    void on_pushButton_1_clicked();
 
-    void on_pushButton_wybierzStolik2_clicked();
+    void on_pushButton_2_clicked();
 
-    void on_pushButton_wybierzStolik3_clicked();
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
 
 private:
     Ui::wyborStolika *ui;

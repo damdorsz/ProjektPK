@@ -58,6 +58,10 @@ private slots:
 
     void on_radioButton_cala_clicked();
 
+    void on_pushButton_dodajPizze_clicked();
+
+    void on_pushButton_dodajPrzystawki_clicked();
+
 private:
     Ui::Zamowienie *ui;
 

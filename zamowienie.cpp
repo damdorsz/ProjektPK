@@ -56,21 +56,24 @@ void Zamowienie::dodajDoRachunkuWybraneNapoje()
 {
     QString nazwaProduktu = ui->comboBox_rodzajeNapoje->currentText();
     int iloscSztuk = ui->spinBox_iloscNapoje->value();
-    QSqlQuery query;
-    query.prepare("SELECT cena FROM napoje WHERE nazwa_napoju = :nazwa;");
-    query.bindValue(":nazwa", nazwaProduktu);
-    if (query.exec() && query.next()) {
-        double cena = query.value(0).toDouble();
-        double cenaCalosci = cena * iloscSztuk;
-        produkty << nazwaProduktu;
-        iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
-        cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
-        sumaZamowienia += cenaCalosci;
-        ktoreMiejsceNaLiscie++;
-        ui->listWidget_rachunek->addItem(QString("%1 - ilość: %2, cena: %3 zł").arg(nazwaProduktu).arg(iloscSztuk).arg(cenaCalosci));
-        aktualizujSumeZamowienia();
-    } else {
-        qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+    if(iloscSztuk > 0)
+    {
+        QSqlQuery query;
+        query.prepare("SELECT cena FROM napoje WHERE nazwa_napoju = :nazwa;");
+        query.bindValue(":nazwa", nazwaProduktu);
+        if (query.exec() && query.next()) {
+            double cena = query.value(0).toDouble();
+            double cenaCalosci = cena * iloscSztuk;
+            produkty << nazwaProduktu;
+            iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
+            cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
+            sumaZamowienia += cenaCalosci;
+            ktoreMiejsceNaLiscie++;
+            ui->listWidget_rachunek->addItem(QString("%1 - ilość: %2, cena: %3 zł").arg(nazwaProduktu).arg(iloscSztuk).arg(cenaCalosci));
+            aktualizujSumeZamowienia();
+        } else {
+            qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+        }
     }
 }
 
@@ -78,30 +81,24 @@ void Zamowienie::dodajDoRachunkuWybraneDodatki()
 {
     QString nazwaProduktu = ui->comboBox_rodzajeDodatkow->currentText();
     int iloscSztuk = ui->spinBox_iloscDodatki->value();
-    QSqlQuery query;
-    query.prepare("SELECT cena FROM dodatki WHERE nazwa_dodatku = :nazwa;");
-    query.bindValue(":nazwa", nazwaProduktu);
-    if (query.exec() && query.next()) {
-        double cena = query.value(0).toDouble();
-        double cenaCalosci = cena * iloscSztuk;
-        produkty << nazwaProduktu;
-        iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
-        cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
-        sumaZamowienia += cenaCalosci;
-        ktoreMiejsceNaLiscie++;
-        ui->listWidget_rachunek->addItem(QString("%1 - ilość: %2, cena: %3 zł").arg(nazwaProduktu).arg(iloscSztuk).arg(cenaCalosci));
-        aktualizujSumeZamowienia();
-    } else {
-        qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
-    }
-    query.prepare("SELECT czas_przygotowania FROM dodatki WHERE nazwa_dodatku = :nazwa;");
-    query.bindValue(":nazwa", nazwaProduktu);
-    if (query.exec() && query.next()) {
-        double czas = query.value(0).toDouble();
-        czasPrzygotowania[ktoreMiejsceNaLiscie - 1] = czas;
-        aktualizujCzasPrzygotowania();
-    } else {
-        qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+    if(iloscSztuk > 0)
+    {
+        QSqlQuery query;
+        query.prepare("SELECT cena FROM dodatki WHERE nazwa_dodatku = :nazwa;");
+        query.bindValue(":nazwa", nazwaProduktu);
+        if (query.exec() && query.next()) {
+            double cena = query.value(0).toDouble();
+            double cenaCalosci = cena * iloscSztuk;
+            produkty << nazwaProduktu;
+            iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
+            cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
+            sumaZamowienia += cenaCalosci;
+            ktoreMiejsceNaLiscie++;
+            ui->listWidget_rachunek->addItem(QString("%1 - ilość: %2, cena: %3 zł").arg(nazwaProduktu).arg(iloscSztuk).arg(cenaCalosci));
+            aktualizujSumeZamowienia();
+        } else {
+            qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+        }
     }
 }
 
@@ -119,7 +116,7 @@ void Zamowienie::aktualizujCzasPrzygotowania()
 void Zamowienie::ustawPizzeComboBox()
 {
     QSqlQuery query(m_kopiaStolika->getDataBase());
-    if (query.exec("SELECT nazwa_pizzcy FROM pizze;")) {
+    if (query.exec("SELECT nazwa_pizzy FROM pizze;")) {
         while (query.next()) {
             QString nazwaProduktu = query.value(0).toString();
             ui->comboBox_rodzajPizzyDrugaPolowa->addItem(nazwaProduktu);
@@ -145,6 +142,14 @@ void Zamowienie::ustawianieComboBoxDodatkiNapojePrzystawki()
         while (query.next()) {
             QString nazwaProduktu = query.value(0).toString();
             ui->comboBox_rodzajeDodatkow->addItem(nazwaProduktu);
+        }
+    } else {
+        qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+    }
+    if (query.exec("SELECT nazwa_przystawki FROM przystawki;")) {
+        while (query.next()) {
+            QString nazwaProduktu = query.value(0).toString();
+            ui->comboBox_rodzajPrzystawki->addItem(nazwaProduktu);
         }
     } else {
         qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
@@ -241,5 +246,89 @@ void Zamowienie::on_radioButton_polowy_clicked()
 void Zamowienie::on_radioButton_cala_clicked()
 {
     ui->comboBox_rodzajPizzyDrugaPolowa->setEnabled(false);
+}
+
+
+void Zamowienie::on_pushButton_dodajPizze_clicked()
+{
+    QString nazwaProduktu = ui->comboBox_rodzajPizzyPolowaLubCala->currentText();
+    QString nazwaProduktu2 = ui->comboBox_rodzajPizzyDrugaPolowa->currentText();
+    bool czyDrugaPolowa = ui->comboBox_rodzajPizzyDrugaPolowa->isEnabled();
+    int iloscSztuk = ui->spinBox_iloscPizzy->value();
+    if(iloscSztuk > 0)
+    {
+        QSqlQuery query;
+        query.prepare("SELECT cena FROM pizze WHERE nazwa_pizzy = :nazwa;");
+        query.bindValue(":nazwa", nazwaProduktu);
+        if (query.exec() && query.next()) {
+            double cena = query.value(0).toDouble();
+            double cenaCalosci = cena * iloscSztuk;
+            if(czyDrugaPolowa)
+            {
+                produkty << nazwaProduktu;
+                iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
+                cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
+                sumaZamowienia += cenaCalosci;
+                ktoreMiejsceNaLiscie++;
+                ui->listWidget_rachunek->addItem(QString("%1 / %2 - ilość: %3, cena: %4 zł").arg(nazwaProduktu).arg(nazwaProduktu2).arg(iloscSztuk).arg(cenaCalosci));
+                aktualizujSumeZamowienia();
+            } else
+            {
+            produkty << nazwaProduktu;
+            iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
+            cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
+            sumaZamowienia += cenaCalosci;
+            ktoreMiejsceNaLiscie++;
+            ui->listWidget_rachunek->addItem(QString("%1 - ilość: %2, cena: %3 zł").arg(nazwaProduktu).arg(iloscSztuk).arg(cenaCalosci));
+            aktualizujSumeZamowienia();
+            }
+        } else {
+            qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+        }
+        query.prepare("SELECT czas_pieczenia FROM pizzy WHERE nazwa_pizzy = :nazwa;");
+        query.bindValue(":nazwa", nazwaProduktu);
+        if (query.exec() && query.next()) {
+            double czas = query.value(0).toDouble();
+            czasPrzygotowania[ktoreMiejsceNaLiscie - 1] = czas;
+            aktualizujCzasPrzygotowania();
+        } else {
+            qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+        }
+    }
+}
+
+
+void Zamowienie::on_pushButton_dodajPrzystawki_clicked()
+{
+    QString nazwaProduktu = ui->comboBox_rodzajPrzystawki->currentText();
+    int iloscSztuk = ui->spinBox_iloscPrzystawki->value();
+    if(iloscSztuk > 0)
+    {
+        QSqlQuery query;
+        query.prepare("SELECT cena FROM przystawki WHERE nazwa_przystawki = :nazwa;");
+        query.bindValue(":nazwa", nazwaProduktu);
+        if (query.exec() && query.next()) {
+            double cena = query.value(0).toDouble();
+            double cenaCalosci = cena * iloscSztuk;
+            produkty << nazwaProduktu;
+            iloscDanegoProduktu[ktoreMiejsceNaLiscie] = iloscSztuk;
+            cenaDanychProduktow[ktoreMiejsceNaLiscie] = cenaCalosci;
+            sumaZamowienia += cenaCalosci;
+            ktoreMiejsceNaLiscie++;
+            ui->listWidget_rachunek->addItem(QString("%1 - ilość: %2, cena: %3 zł").arg(nazwaProduktu).arg(iloscSztuk).arg(cenaCalosci));
+            aktualizujSumeZamowienia();
+        } else {
+            qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+        }
+        query.prepare("SELECT czas_pieczenia FROM przystawki WHERE nazwa_przystawki = :nazwa;");
+        query.bindValue(":nazwa", nazwaProduktu);
+        if (query.exec() && query.next()) {
+            double czas = query.value(0).toDouble();
+            czasPrzygotowania[ktoreMiejsceNaLiscie - 1] = czas;
+            aktualizujCzasPrzygotowania();
+        } else {
+            qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
+        }
+    }
 }
 

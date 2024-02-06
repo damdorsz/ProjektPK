@@ -35,11 +35,6 @@ public:
 private slots:
     void on_pushButton_logowanie_clicked();
 
-    // void on_btAdd_clicked();
-
-    // void on_records_doubleClicked(const QModelIndex &index);
-
-    // void on_btRemove_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -17,6 +17,7 @@ public:
     ~StanStolikow();
     Stolik *m_kopiaStolika;
     void ladowanieWyboruStolika();
+    void ustawWstepnie();
     QPixmap stolikDwuOsobowy;
     QPixmap stolikCzteroOsobowy;
     QPixmap stolikSzczescioOsobowy;
@@ -25,13 +26,9 @@ public:
     int widthLogo;
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_pushButton_cofnij_clicked();
 
-    void on_pushButton_ZwolnijStolik1_clicked();
-
-    void on_pushButton_zwolnijStolik2_clicked();
-
-    void on_pushButton_zwolnijStolik3_clicked();
+    void on_pushButton_zwolnij_clicked();
 
 private:
     Ui::StanStolikow *ui;
