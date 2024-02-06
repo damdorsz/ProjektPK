@@ -186,16 +186,16 @@
         <widget class="QLineEdit" name="lineEdit_kodRabatowy"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_usunProdukt">
+        <widget class="QPushButton" name="pushButton_dodajRabat">
          <property name="text">
-          <string>Usun Produkt</string>
+          <string>dodajRabat</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_resetujZamowienie">
+        <widget class="QPushButton" name="pushButton_usunProdukt">
          <property name="text">
-          <string>Resetuj Zamowienie</string>
+          <string>Usun Produkt</string>
          </property>
         </widget>
        </item>
@@ -268,6 +268,13 @@
         <widget class="QPushButton" name="pushButton_dodajZamowienie">
          <property name="text">
           <string>Dodaj Zamowienie</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_resetujZamowienie">
+         <property name="text">
+          <string>Resetuj Zamowienie</string>
          </property>
         </widget>
        </item>

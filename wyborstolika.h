@@ -24,7 +24,9 @@ public:
     QPixmap kwiatek;
     int heightLogo;
     int widthLogo;
+
     Stolik *m_kopiaStolika;
+
     void ladowanieWyboruStolika();
     void ustawWstepnie();
 

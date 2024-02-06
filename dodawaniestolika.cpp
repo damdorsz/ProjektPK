@@ -66,6 +66,24 @@ void DodawanieStolika::on_buttonBox_potwierdzenieDodania_accepted()
     liczbaKrzesel = ui->comboBox_wyborIlosciMiejsc->currentText();
     if(!ui->comboBox_wyborIlosciMiejsc->isEnabled())
     {
+        QSqlQuery query(*m_bazaDanych);
+        query.prepare("SELECT ilosc_w_magazynie FROM stolik WHERE stolik_ilosc_miejsc = :nazwa");
+        query.bindValue(":nazwa", liczbaKrzesel);
+        int liczbaWolnychStolikow = query.value(0).toInt();
+        int nowaLiczbaWolnychStolikow = liczbaWolnychStolikow + liczbaZaznaczonych;
+        query.clear();
+        query.prepare("SELECT ilosc_w_restauracji FROM stolik WHERE stolik_ilosc_miejsc = :nazwa");
+        query.bindValue(":nazwa", liczbaKrzesel);
+        query.exec();
+        query.next();
+        int liczbaZajetychStolikow = query.value(0).toInt();
+        int nowaLiczbaZajetychStolikow = liczbaZajetychStolikow - liczbaZaznaczonych;
+        query.clear();
+        query.prepare("UPDATE stolik SET ilosc_w_magazynie = :nowaLiczbaWolnych, ilosc_w_restauracji = :nowaLiczbaZajetych WHERE stolik_ilosc_miejsc = :nazwa");
+        query.bindValue(":nowaLiczbaWolnych", nowaLiczbaWolnychStolikow);
+        query.bindValue(":nowaLiczbaZajetych", nowaLiczbaZajetychStolikow);
+        query.bindValue(":nazwa", liczbaKrzesel);
+        query.exec();
         liczbaKrzesel = "0";
     }
     if(getIloscMiejsc() > 0)
@@ -74,16 +92,26 @@ void DodawanieStolika::on_buttonBox_potwierdzenieDodania_accepted()
         query.prepare("SELECT ilosc_w_magazynie FROM stolik WHERE stolik_ilosc_miejsc = :nazwa");
         query.bindValue(":nazwa", liczbaKrzesel);
         if (query.exec() && query.next()) {
-            int liczbaWolnychStolikow = query.value(0).toInt();
+            int liczbaWolnychStolikow = query.value(0).toInt();// wciagam ile jest wolnych
             if (liczbaZaznaczonych <= liczbaWolnychStolikow) {
-                QMessageBox::information(this, "Informacja", "Możesz zarezerwować stoliki.");
+                int nowaLiczbaWolnychStolikow = liczbaWolnychStolikow - liczbaZaznaczonych;
+                query.clear();
+                query.prepare("SELECT ilosc_w_restauracji FROM stolik WHERE stolik_ilosc_miejsc = :nazwa");
+                query.bindValue(":nazwa", liczbaKrzesel);
+                query.exec();
+                query.next();
+                int liczbaZajetychStolikow = query.value(0).toInt();
+                int nowaLiczbaZajetychStolikow = liczbaZajetychStolikow + liczbaZaznaczonych;
+                query.clear();
+                query.prepare("UPDATE stolik SET ilosc_w_magazynie = :nowaLiczbaWolnych, ilosc_w_restauracji = :nowaLiczbaZajetych WHERE stolik_ilosc_miejsc = :nazwa");
+                query.bindValue(":nowaLiczbaWolnych", nowaLiczbaWolnychStolikow);
+                query.bindValue(":nowaLiczbaZajetych", nowaLiczbaZajetychStolikow);
+                query.bindValue(":nazwa", liczbaKrzesel);
+                query.exec();
             } else {
                 liczbaKrzesel = 0;
-                QMessageBox::warning(this, "Uwaga", "Niestety, nie ma wystarczającej liczby wolnych stolików.");
+                QMessageBox::warning(this, "Uwaga", "Niestety, nie ma tyle stolikow w magazynie.");
             }
-        } else {
-            // Obsługa błędu zapytania
-            QMessageBox::critical(this, "Błąd", "Błąd podczas wykonywania zapytania SELECT.");
         }
     }
 }

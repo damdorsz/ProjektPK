@@ -24,22 +24,22 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    void readRecordsToListWidget();
-
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QPixmap logoFirmy;
     int heightLogo;
     int widthLogo;
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private slots:
     void on_pushButton_logowanie_clicked();
-
 
 private:
     Ui::MainWindow *ui;
     MainMenu *m_mainmenu;
     QSqlDatabase *db;
-
 };
 #endif // MAINWINDOW_H

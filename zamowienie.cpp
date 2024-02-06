@@ -168,6 +168,7 @@ void Zamowienie::on_pushButton_sumujZamowienie_clicked()
 void Zamowienie::on_pushButton_dodajZamowienie_clicked()
 {
     ui->pushButton_dodajZamowienie->setEnabled(false);
+    m_kopiaStolika->m_kwotaZamowienia[ktoryStolik] = sumaZamowienia;
     int nibySuma = 0;
     int czasOczekiwania = 0;
     ui->label_sumaZamowienia->setText(QString::number(nibySuma) + " zl");
@@ -330,5 +331,20 @@ void Zamowienie::on_pushButton_dodajPrzystawki_clicked()
             qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
         }
     }
+}
+
+
+void Zamowienie::on_pushButton_dodajRabat_clicked()
+{
+    double dziesiecProcentRabatu = 0.9;
+    QString kodPromocyjny = "programowanie";
+    QString podanyKod = ui->lineEdit_kodRabatowy->text();
+    if(kodPromocyjny == podanyKod)
+    {
+        sumaZamowienia *= dziesiecProcentRabatu;
+        ui->label_sumaZamowienia->setText(QString::number(sumaZamowienia));
+    }
+    else
+        QMessageBox::information(this,"Uwaga!!","Zly kod rabatowy");
 }
 

@@ -15,9 +15,12 @@ class StanStolikow : public QDialog
 public:
     explicit StanStolikow(QWidget *parent = nullptr);
     ~StanStolikow();
+
     Stolik *m_kopiaStolika;
+
     void ladowanieWyboruStolika();
     void ustawWstepnie();
+
     QPixmap stolikDwuOsobowy;
     QPixmap stolikCzteroOsobowy;
     QPixmap stolikSzczescioOsobowy;

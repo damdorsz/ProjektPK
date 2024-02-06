@@ -18,6 +18,10 @@ MainMenu::MainMenu(QWidget *parent)
 
 MainMenu::~MainMenu()
 {
+    delete m_stolik;
+    delete m_zamowienie;
+    delete m_wyborStolika;
+    delete m_stanStolikow;
     delete ui;
 }
 
@@ -50,3 +54,6 @@ void MainMenu::on_pushButton_stanStolikow_clicked()
     m_stanStolikow->ladowanieWyboruStolika();
     m_stanStolikow->exec();
 }
+
+
+

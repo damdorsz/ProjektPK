@@ -68,10 +68,10 @@ void StanStolikow::ladowanieWyboruStolika()
             }
             else
             {
-                int tempKwota = 30;
+                int kwota = m_kopiaStolika->m_kwotaZamowienia[licznik - 1];
                 labelWolny->setText("Zajety");
                 checkBox->setEnabled(true);
-                labelKwota->setText(QString::number(tempKwota));
+                labelKwota->setText(QString::number(kwota));
                 if(m_kopiaStolika->iloscKrzesel[licznik - 1] == 2)
                 {
                     labelAddImg->setPixmap(stolikDwuOsobowy.scaled(widthLogo,heightLogo,Qt::KeepAspectRatio));

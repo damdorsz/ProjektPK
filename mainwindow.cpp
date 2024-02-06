@@ -31,8 +31,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_logowanie_clicked()
 {
-    ui->lineEdit_login->setText("admin");
-    ui->lineEdit_password->setText("admin");
     QString login = ui->lineEdit_login->text();
     QString password = ui->lineEdit_password->text();
     db->setPassword(password);
@@ -51,6 +49,17 @@ void MainWindow::on_pushButton_logowanie_clicked()
     {
         qDebug() << "ERROR load: " << db->lastError().text();
         QMessageBox::information(this,"Błąd logowania","Zły Login lub haslo");
+    }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(db->isOpen())
+    {
+    QSqlQuery query(*db);
+    query.exec("UPDATE stolik SET ilosc_w_magazynie = 4, ilosc_w_restauracji = 0 WHERE stolik_ilosc_miejsc = 2");
+    query.exec("UPDATE stolik SET ilosc_w_magazynie = 4, ilosc_w_restauracji = 0 WHERE stolik_ilosc_miejsc = 4");
+    query.exec("UPDATE stolik SET ilosc_w_magazynie = 4, ilosc_w_restauracji = 0 WHERE stolik_ilosc_miejsc = 6");
     }
 }
 

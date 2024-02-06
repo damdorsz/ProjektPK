@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "stolik.h"
+#include <QMessageBox>
 
 namespace Ui {
 class Zamowienie;
@@ -37,6 +38,7 @@ public:
     QPixmap polowyPizza;
     int heightLogo;
     int widthLogo;
+
     int ktoreMiejsceNaLiscie;
 
 private slots:
@@ -61,6 +63,8 @@ private slots:
     void on_pushButton_dodajPizze_clicked();
 
     void on_pushButton_dodajPrzystawki_clicked();
+
+    void on_pushButton_dodajRabat_clicked();
 
 private:
     Ui::Zamowienie *ui;
