@@ -38,6 +38,7 @@ private slots:
     void on_pushButton_logowanie_clicked();
 
 private:
+    void logowaniePrzezEnter();
     Ui::MainWindow *ui;
     MainMenu *m_mainmenu;
     QSqlDatabase *db;

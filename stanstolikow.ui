@@ -68,15 +68,24 @@
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
                 <widget class="QLabel" name="label_czyWolny1">
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
                  <property name="text">
                   <string>Brak</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QCheckBox" name="checkBox_1">
                  <property name="layoutDirection">
-                  <enum>Qt::RightToLeft</enum>
+                  <enum>Qt::LeftToRight</enum>
                  </property>
                  <property name="text">
                   <string/>
@@ -125,12 +134,15 @@
                  <property name="text">
                   <string>Brak</string>
                  </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
                 </widget>
                </item>
                <item>
                 <widget class="QCheckBox" name="checkBox_2">
                  <property name="layoutDirection">
-                  <enum>Qt::RightToLeft</enum>
+                  <enum>Qt::LeftToRight</enum>
                  </property>
                  <property name="text">
                   <string/>
@@ -179,12 +191,15 @@
                  <property name="text">
                   <string>Brak</string>
                  </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
                 </widget>
                </item>
                <item>
                 <widget class="QCheckBox" name="checkBox_3">
                  <property name="layoutDirection">
-                  <enum>Qt::RightToLeft</enum>
+                  <enum>Qt::LeftToRight</enum>
                  </property>
                  <property name="text">
                   <string/>
@@ -239,12 +254,15 @@
                <property name="text">
                 <string>Brak</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="checkBox_4">
                <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
+                <enum>Qt::LeftToRight</enum>
                </property>
                <property name="text">
                 <string/>
@@ -293,12 +311,15 @@
                <property name="text">
                 <string>Brak</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="checkBox_5">
                <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
+                <enum>Qt::LeftToRight</enum>
                </property>
                <property name="text">
                 <string/>
@@ -347,12 +368,15 @@
                <property name="text">
                 <string>Brak</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="checkBox_6">
                <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
+                <enum>Qt::LeftToRight</enum>
                </property>
                <property name="text">
                 <string/>
@@ -409,12 +433,15 @@
                    <property name="text">
                     <string>Brak</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QCheckBox" name="checkBox_7">
                    <property name="layoutDirection">
-                    <enum>Qt::RightToLeft</enum>
+                    <enum>Qt::LeftToRight</enum>
                    </property>
                    <property name="text">
                     <string/>
@@ -463,12 +490,15 @@
                    <property name="text">
                     <string>Brak</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QCheckBox" name="checkBox_8">
                    <property name="layoutDirection">
-                    <enum>Qt::RightToLeft</enum>
+                    <enum>Qt::LeftToRight</enum>
                    </property>
                    <property name="text">
                     <string/>
@@ -517,12 +547,15 @@
                    <property name="text">
                     <string>Brak</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QCheckBox" name="checkBox_9">
                    <property name="layoutDirection">
-                    <enum>Qt::RightToLeft</enum>
+                    <enum>Qt::LeftToRight</enum>
                    </property>
                    <property name="text">
                     <string/>

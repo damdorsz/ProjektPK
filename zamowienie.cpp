@@ -169,10 +169,10 @@ void Zamowienie::on_pushButton_dodajZamowienie_clicked()
 {
     ui->pushButton_dodajZamowienie->setEnabled(false);
     m_kopiaStolika->m_kwotaZamowienia[ktoryStolik] = sumaZamowienia;
-    int nibySuma = 0;
-    int czasOczekiwania = 0;
-    ui->label_sumaZamowienia->setText(QString::number(nibySuma) + " zl");
-    ui->label_czasOczekiwania->setText(QString::number(czasOczekiwania) + " minut");
+    int resetSuma = 0;
+    int resetCzasOczekiwania = 0;
+    ui->label_sumaZamowienia->setText(QString::number(resetSuma) + " zl");
+    ui->label_czasOczekiwania->setText(QString::number(resetCzasOczekiwania) + " minut");
     m_kopiaStolika->czyWolny[ktoryStolik] = false;
     close();
 }
@@ -195,7 +195,6 @@ void Zamowienie::on_pushButton_usunProdukt_clicked()
         ui->listWidget_rachunek->takeItem(ui->listWidget_rachunek->row(selectedItem));
         aktualizujSumeZamowienia();
         aktualizujCzasPrzygotowania();
-        delete selectedItem;
     } else {
         qDebug() << "Nie wybrano elementu do usunięcia.";
     }
@@ -286,7 +285,7 @@ void Zamowienie::on_pushButton_dodajPizze_clicked()
         } else {
             qDebug() << "Błąd wykonania zapytania:" << query.lastError().text();
         }
-        query.prepare("SELECT czas_pieczenia FROM pizzy WHERE nazwa_pizzy = :nazwa;");
+        query.prepare("SELECT czas_pieczenia FROM pizze WHERE nazwa_pizzy = :nazwa;");
         query.bindValue(":nazwa", nazwaProduktu);
         if (query.exec() && query.next()) {
             double czas = query.value(0).toDouble();

@@ -22,12 +22,11 @@ public:
     bool aktywneCheckBoxy[ILOSC_CHECK_BOXOW];
     bool czyDodawanie;
     bool *m_kopiaCzyWolny;
+    int *m_kopiailoscKrzesel;
 
-    QString getKtoryStolik() const;
     int getIloscMiejsc() const;
-
-    void  ustawianieCheckBox();
-    void zablokujQComboBox();
+    void ustawianieCheckBox();
+    void zmianaIndexuComboBox();
 
 private slots:
 

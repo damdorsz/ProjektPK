@@ -22,6 +22,12 @@ StanStolikow::~StanStolikow()
 
 void StanStolikow::on_pushButton_cofnij_clicked()
 {
+    for(int licznik = 1,maksimum = m_kopiaStolika->ILOSC_STOLIKOW;licznik <= maksimum;licznik++)
+    {
+        QString nazwaCheckBoxa = QString("checkBox_%1").arg(licznik);
+        QCheckBox *checkBox = findChild<QCheckBox*>(nazwaCheckBoxa);
+        checkBox->setChecked(false);
+    }
     close();
 }
 
@@ -111,6 +117,7 @@ void StanStolikow::on_pushButton_zwolnij_clicked()
             m_kopiaStolika->m_kwotaZamowienia[licznik - 1] = 0;
             labelWolny->setText("Wolny");
             checkBox->setEnabled(false);
+            checkBox->setChecked(false);
             labelKwota->setText(QString::number(m_kopiaStolika->m_kwotaZamowienia[licznik - 1]));
         }
     }

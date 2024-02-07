@@ -93,7 +93,6 @@ void wyborStolika::on_pushButton_1_clicked()
     {
         ui->label_czyWolny1->setText("Zajety");
         ui->pushButton_1->setEnabled(false);
-        close();
     }
 }
 
@@ -109,9 +108,9 @@ void wyborStolika::on_pushButton_2_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[1] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny2->setText("Zajety");
+        ui->pushButton_2->setEnabled(false);
+
     }
 }
 
@@ -127,9 +126,9 @@ void wyborStolika::on_pushButton_3_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[2] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny3->setText("Zajety");
+        ui->pushButton_3->setEnabled(false);
+
     }
 }
 
@@ -145,9 +144,9 @@ void wyborStolika::on_pushButton_4_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[3] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny4->setText("Zajety");
+        ui->pushButton_4->setEnabled(false);
+
     }
 }
 
@@ -163,9 +162,9 @@ void wyborStolika::on_pushButton_5_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[4] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny5->setText("Zajety");
+        ui->pushButton_5->setEnabled(false);
+
     }
 }
 
@@ -181,9 +180,9 @@ void wyborStolika::on_pushButton_6_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[5] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny6->setText("Zajety");
+        ui->pushButton_6->setEnabled(false);
+
     }
 }
 
@@ -199,9 +198,9 @@ void wyborStolika::on_pushButton_7_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[6] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny7->setText("Zajety");
+        ui->pushButton_7->setEnabled(false);
+
     }
 }
 
@@ -217,9 +216,9 @@ void wyborStolika::on_pushButton_8_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[7] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny8->setText("Zajety");
+        ui->pushButton_8->setEnabled(false);
+
     }
 }
 
@@ -235,9 +234,9 @@ void wyborStolika::on_pushButton_9_clicked()
     m_zamowienie->exec();
     if(m_kopiaStolika->czyWolny[8] == false)
     {
-        ui->label_czyWolny1->setText("Zajety");
-        ui->pushButton_1->setEnabled(false);
-        close();
+        ui->label_czyWolny9->setText("Zajety");
+        ui->pushButton_9->setEnabled(false);
+
     }
 }
 

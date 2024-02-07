@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     db->setDatabaseName("projktqtzaliczenie");
     db->setHostName("127.0.0.1");
     db->setPort(3310);
+    connect(ui->lineEdit_password, &QLineEdit::returnPressed, this, &MainWindow::logowaniePrzezEnter);
 }
 
 
@@ -30,6 +31,11 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_pushButton_logowanie_clicked()
+{
+    logowaniePrzezEnter();
+}
+
+void MainWindow::logowaniePrzezEnter()
 {
     QString login = ui->lineEdit_login->text();
     QString password = ui->lineEdit_password->text();

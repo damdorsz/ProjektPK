@@ -12,8 +12,8 @@ Stolik::Stolik(QWidget *parent)
     stolikCzteroOsobowy = {":/img/img/4osobowy.png"};
     stolikSzczescioOsobowy = {":/img/img/6osobowy.png"};
     kwiat = {":/img/img/kwiat.png"};
-    widthLogo = 200;
-    heightLogo = 200;
+    widthLogo = 250;
+    heightLogo = 250;
     dodanieDomyslnychObrazkow();
 }
 
@@ -86,16 +86,15 @@ void Stolik::on_pushButton_dodajStolik_clicked()
     delete m_nowyStolik;
 }
 
-
-
-
 void Stolik::on_pushButton_usunStolik_clicked()
 {
     m_nowyStolik = new DodawanieStolika(this);
-    m_nowyStolik->zablokujQComboBox();
+    m_nowyStolik->m_bazaDanych = m_db;
     m_nowyStolik->m_kopiaCzyWolny = czyWolny;
     m_nowyStolik->czyDodawanie = false;
+    m_nowyStolik->m_kopiailoscKrzesel = iloscKrzesel;
     m_nowyStolik->ustawianieCheckBox();
+    m_nowyStolik->zmianaIndexuComboBox();
     m_nowyStolik->exec();
     for(int licznik = 1;licznik <= ILOSC_STOLIKOW;licznik++)
     {
